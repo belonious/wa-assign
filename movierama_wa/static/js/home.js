@@ -77,7 +77,7 @@ const getOpinionTpl = (movie) => {
 }
 const getMovieTpl = movie => {
     const postAge = getDateDisplay(movie.date_created);
-    const opinionTpl = getOpinionTpl(movie)
+    const opinionTpl = USER_LOGGED_IN ? getOpinionTpl(movie) : ''
     return `<div>\
     <h3>${movie.title}</h3>\
     <div class="user-${movie.submitted_by.id}">Posted by ${movie.submitted_by.username}\
@@ -85,7 +85,6 @@ const getMovieTpl = movie => {
     <div>${movie.description}</div>\
     <div>likes ${movie.aggr_opinions.opinions.likes} |\
     hates ${movie.aggr_opinions.opinions.hates}</div>\
-    <div>Your opinion matters</div>
     ${opinionTpl}\
     </div>`
 }
