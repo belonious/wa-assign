@@ -1,0 +1,51 @@
+version: '3'
+
+volumes:
+  movierama_wa_local_postgres_data: {}
+  movierama_wa_local_postgres_data_backups: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: movierama_wa_local_django
+    container_name: movierama_wa_local_django
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    ports:
+      - "9001:8000"
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: movierama_wa_production_postgres
+    container_name: movierama_wa_local_postgres
+    volumes:
+      - movierama_wa_local_postgres_data:/var/lib/postgresql/data
+      - movierama_wa_local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+
+  docs:
+    image: movierama_wa_local_docs
+    container_name: movierama_wa_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./movierama_wa:/app/movierama_wa:z
+    ports:
+      - "9002:9000"
+    command: /start-docs

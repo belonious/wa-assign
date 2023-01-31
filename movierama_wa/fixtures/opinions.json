@@ -1,0 +1,65 @@
+[
+    {
+    "model": "users.opinion",
+    "pk": 1,
+    "fields": {
+      "like": true,
+      "user": 4,
+      "movie": 1
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 3,
+    "fields": {
+      "like": true,
+      "user": 2,
+      "movie": 1
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 5,
+    "fields": {
+      "like": false,
+      "user": 2,
+      "movie": 2
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 6,
+    "fields": {
+      "like": false,
+      "user": 1,
+      "movie": 2
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 7,
+    "fields": {
+      "like": true,
+      "user": 4,
+      "movie": 5
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 8,
+    "fields": {
+      "like": true,
+      "user": 3,
+      "movie": 6
+    }
+  },
+  {
+    "model": "users.opinion",
+    "pk": 15,
+    "fields": {
+      "like": true,
+      "user": 3,
+      "movie": 5
+    }
+  }
+]
